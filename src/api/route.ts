@@ -5,21 +5,20 @@ export async function POST(request: Request) {
   try {
     const { name, email, message } = await request.json();
 
-    // Configure transporter (example with Gmail SMTP — replace with your dad’s server or provider)
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true,
-      auth: {
-        user: process.env.MAIL_USER, // your dad’s email
-        pass: process.env.MAIL_PASS, // app password or SMTP password
-      },
+      host: process.env.MAIL_HOST,
+      port: Number(process.env.MAIL_PORT),
+      auth: process.env.MAIL_USER
+        ? {
+            user: process.env.MAIL_USER,
+            pass: process.env.MAIL_PASS,
+          }
+        : undefined,
     });
 
-    // Send the email
     await transporter.sendMail({
-      from: `"Linux Services Site" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_TO, // where your dad receives inquiries
+      from: `"Linux Services Site" <${process.env.MAIL_USER || process.env.MAIL_TO}>`,
+      to: process.env.MAIL_TO,
       subject: "New Contact Form Submission",
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
       html: `<p><b>Name:</b> ${name}</p>
@@ -33,4 +32,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: false }, { status: 500 });
   }
 }
+
 
