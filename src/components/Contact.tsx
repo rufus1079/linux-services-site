@@ -1,5 +1,4 @@
 // src/components/Contact.tsx
-import { PhoneIcon, GlobeAltIcon } from "@heroicons/react/24/outline";
 import ContactForm from "@/components/ContactForm";
 
 export default function Contact() {
