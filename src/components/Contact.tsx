@@ -14,13 +14,6 @@ export default function Contact() {
 
       {/* Other contact methods */}
       <div className="flex flex-col gap-6 text-lg">
-        <div className="flex items-center gap-3">
-          <PhoneIcon className="w-6 h-6 text-green-400" />
-          <a href="tel:+1234567890">+1 (234) 567-890</a>
-        </div>
-        <div className="flex items-center gap-3">
-          <GlobeAltIcon className="w-6 h-6 text-green-400" />
-          <a href="https://yourwebsite.com">yourwebsite.com</a>
         </div>
       </div>
     </section>
