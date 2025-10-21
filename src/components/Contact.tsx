@@ -14,7 +14,6 @@ export default function Contact() {
 
       {/* Other contact methods */}
       <div className="flex flex-col gap-6 text-lg">
-        </div>
       </div>
     </section>
   );
